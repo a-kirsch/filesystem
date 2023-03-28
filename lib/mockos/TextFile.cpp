@@ -31,7 +31,7 @@ int TextFile::append(std::vector<char> addition) {
 void TextFile::read() {
     for(int i = 0; i < contents.size(); ++i)
     {
-        cout << contents[i] << endl; // note: never explicitly said to flush/print so maybe just cout and no endl?
+        cout << contents[i]; // note: never explicitly said to flush/print so maybe just cout and no endl?
     }
 }
 
