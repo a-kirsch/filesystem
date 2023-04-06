@@ -32,7 +32,7 @@ int ImageFile::write(vector<char> parameter) {
 }
 
 int ImageFile::append(vector<char>) {
-    return 2; // make enum later; images do not support append
+    return invalidOperation;
 }
 
 unsigned int ImageFile::getSize() {

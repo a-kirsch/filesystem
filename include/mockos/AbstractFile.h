@@ -9,4 +9,5 @@ public:
     virtual int append(std::vector<char>) = 0;
     virtual unsigned int getSize() = 0;
     virtual std::string getName() = 0;
+    virtual ~AbstractFile() = default;
 };

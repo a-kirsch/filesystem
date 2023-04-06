@@ -4,13 +4,20 @@
 
 
 class ImageFile : public AbstractFile {
-    std::string name;
-    std::vector<char> contents;
-    char size;
+public:
     ImageFile(std::string);
     void read();
     int write(std::vector<char>);
     int append(std::vector<char>);
     unsigned int getSize();
     std::string getName();
+private:
+    std::string name;
+    std::vector<char> contents;
+    char size;
+};
+
+enum return_values {
+    pass,
+    invalidOperation = 2
 };
