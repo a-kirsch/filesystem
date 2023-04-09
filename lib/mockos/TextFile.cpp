@@ -33,5 +33,6 @@ void TextFile::read() {
     {
         cout << contents[i]; // note: never explicitly said to flush/print so maybe just cout and no endl?
     }
+    cout << endl;
 }
 

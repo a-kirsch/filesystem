@@ -11,15 +11,15 @@ int SimpleFileSystem::addFile(string fileName, AbstractFile * abstractFile)
     if (files.find(fileName) != files.end() )
     {
         cout << "File already exists in map." << endl;
-        return -1; //Add an enum
+        return file_already_exists;
     }
     if (abstractFile == nullptr)
     {
         cout << "Null Pointer Error" << endl;
-        return -1; //Add an enum
+        return nullptr_error;
     }
     files.insert(std::pair<string, AbstractFile *>(fileName, abstractFile) );
-    return 0; //Add an enum
+    return pass;
 }
 
 int SimpleFileSystem::createFile(string fileName)
@@ -27,8 +27,9 @@ int SimpleFileSystem::createFile(string fileName)
     if (files.find(fileName) != files.end() )
     {
         cout << "File already exists." << endl;
-        return -1; //Add an enum
+        return file_already_exists;
     }
+
     string extensionType = fileName.substr(fileName.find('.') ); //Do I need to account for when non-file type is passed?
 
     if (extensionType == ".txt" )
@@ -41,15 +42,16 @@ int SimpleFileSystem::createFile(string fileName)
         AbstractFile * file = new ImageFile(fileName);
         files.insert(std::pair<string, AbstractFile *>(fileName, file) );
     }
-    return 0; //Add an enum
+    return pass;
 }
 
-AbstractFile * SimpleFileSystem::openFile(string fileName)
+AbstractFile * SimpleFileSystem::openFile(string fileName) //Ask TA if opening the file is anything other than placing it in the openFile set
 {
     if (files.find(fileName) != files.end() )
     {
        if (openFiles.find(files.at(fileName) ) == openFiles.end() ) //Check if the file is already open (look in openFiles)
        {
+            cout << "File open" << endl;
             openFiles.insert(files.at(fileName) );
             return files.at(fileName);
        }
@@ -62,28 +64,32 @@ int SimpleFileSystem::closeFile(AbstractFile * file)
     if (openFiles.find(file) != openFiles.end() )
     {
         openFiles.erase(file);
-        return 0; //Add an enum
+        return pass;
     }
-    return -1; //Add an enum
+    cout << "File is already closed." << endl;
+    return file_already_closed;
 }
 
 int SimpleFileSystem::deleteFile(string fileName)
 {
     if (files.find(fileName) != files.end() )
     {
-        if (openFiles.find(files.at(fileName)) != openFiles.end() )
+        if (openFiles.find(files.at(fileName)) == openFiles.end() )
         {
+            delete files.at(fileName);
             files.erase(fileName);
-            delete &fileName;
+            return pass;
         }
         else
         {
-            return -1; //file is open error - Add an enum
+            cout << "File is currently open." << endl;
+            return file_open;
         }
     }
     else
     {
-        return -1; //File never existed error - Add an enum
+        cout << "File does not exist."  << endl;
+        return file_does_not_exist;
     }
 }
 
