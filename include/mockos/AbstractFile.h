@@ -1,15 +1,17 @@
 #pragma once
 #include <vector>
 #include <string>
+class AbstractFileVisitor;
 
 class AbstractFile{
 public:
-    virtual void read() = 0;
+    virtual std::vector<char> read() = 0;
     virtual int write(std::vector<char>) = 0;
     virtual int append(std::vector<char>) = 0;
     virtual unsigned int getSize() = 0;
     virtual std::string getName() = 0;
     virtual ~AbstractFile() = default;
+    virtual void accept(AbstractFileVisitor *) = 0;
 };
 
 enum return_values {

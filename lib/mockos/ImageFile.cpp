@@ -1,4 +1,4 @@
-#include "../../include/mockos/ImageFile.h"
+#include "../../include/mockos/AbstractFileVisitor.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -7,15 +7,8 @@ using namespace std;
 
 ImageFile::ImageFile(string named) : name(named),size(0) {}
 
-void ImageFile::read() {
-    for(int h = size - 1; h >= 0; --h)
-    {
-        for(int w = 0; w < size; ++w)
-        {
-            cout << contents[h*size + w];
-        }
-        cout << endl;
-    }
+std::vector<char> ImageFile::read() {
+    return contents;
 }
 
 int ImageFile::write(vector<char> parameter) {
@@ -51,4 +44,8 @@ unsigned int ImageFile::getSize() {
 
 string ImageFile::getName() {
     return name;
+}
+
+void ImageFile::accept(AbstractFileVisitor * abstractFileVisitor) {
+    abstractFileVisitor->visit_ImageFile(this);
 }

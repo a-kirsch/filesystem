@@ -1,7 +1,7 @@
-#include "../../include/mockos/TextFile.h"
-
+#include "../../include/mockos/AbstractFileVisitor.h"
 #include <string>
 #include <iostream>
+
 
 using namespace std;
 
@@ -28,11 +28,11 @@ int TextFile::append(std::vector<char> addition) {
     return pass;
 }
 
-void TextFile::read() {
-    for(int i = 0; i < contents.size(); ++i)
-    {
-        cout << contents[i]; // note: never explicitly said to flush/print so maybe just cout and no endl?
-    }
-    cout << endl;
+std::vector<char> TextFile::read() {
+    return contents;
+}
+
+void TextFile::accept(AbstractFileVisitor * abstractFileVisitor) {
+    abstractFileVisitor->visit_TextFile(this);
 }
 
