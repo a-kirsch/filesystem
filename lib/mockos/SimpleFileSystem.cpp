@@ -22,32 +22,6 @@ int SimpleFileSystem::addFile(string fileName, AbstractFile * abstractFile)
     return pass;
 }
 
-int SimpleFileSystem::createFile(string fileName)
-{
-    if (files.find(fileName) != files.end() )
-    {
-        cout << "File already exists." << endl;
-        return file_already_exists;
-    }
-
-    string extensionType = fileName.substr(fileName.find('.') ); //Do I need to account for when non-file type is passed?
-
-    if (extensionType == ".txt" )
-    {
-        AbstractFile * file = new TextFile(fileName);
-        files.insert(std::pair<string, AbstractFile *>(fileName, file) );
-        return pass;
-    }
-    else if (extensionType == ".img")
-    {
-        AbstractFile * file = new ImageFile(fileName);
-        files.insert(std::pair<string, AbstractFile *>(fileName, file) );
-        return pass;
-    }
-    return invalid_file_type;
-
-}
-
 AbstractFile * SimpleFileSystem::openFile(string fileName) //Ask TA if opening the file is anything other than placing it in the openFile set
 {
     if (files.find(fileName) != files.end() )
