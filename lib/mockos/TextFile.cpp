@@ -17,7 +17,7 @@ std::string TextFile::getName() {
 
 int TextFile::write(std::vector<char> passedIn){
     contents = passedIn;
-    return 0; // note: in the future we should be checking if the copy worked
+    return pass; // note: in the future we should be checking if the copy worked
 }
 
 int TextFile::append(std::vector<char> addition) {
@@ -25,7 +25,7 @@ int TextFile::append(std::vector<char> addition) {
     {
         contents.push_back(addition[i]);
     }
-    return 0;
+    return pass;
 }
 
 void TextFile::read() {

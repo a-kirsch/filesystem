@@ -17,7 +17,9 @@ int main (int argc, char * argv[] )
     sfs.addFile("fileB", fileB);
 
     sfs.createFile("fileA"); //Test if the file system recognizes that this file already exists in the system
-    sfs.createFile("alphabet.txt"); //How do we access a file we created?, I'm trying to append and read to that file but can't because we don't have a pointer to it
+    sfs.createFile("alphabet.txt");
+
+    AbstractFile * alphabetFile = sfs.openFile("alphabet.txt");
 
     vector<char> characters;
 
@@ -25,14 +27,14 @@ int main (int argc, char * argv[] )
         characters.push_back('a' + i); //Push the alphabet
     }
 
-    sfs.openFile("fileA")->append(characters);
-    fileA->read();
-
+    alphabetFile->append(characters);
+    alphabetFile->read();
 
     sfs.deleteFile("test"); //Checks if the file system recognizes this file never existed
-    sfs.deleteFile("fileA");//Checks if the delete function recognized the file is open
 
-    sfs.closeFile(fileA);
+    sfs.deleteFile("alphabet.txt");//Checks if the delete function recognized the file is open
 
-    return sfs.deleteFile("fileA"); //Deletes fileA
+    sfs.closeFile(alphabetFile);
+
+    return sfs.deleteFile("alphabet.txt"); //Deletes fileA
 }

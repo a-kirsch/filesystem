@@ -11,3 +11,11 @@ public:
     virtual std::string getName() = 0;
     virtual ~AbstractFile() = default;
 };
+
+enum return_values {
+    pass,
+    size_mismatch,
+    invalid_operation,
+    bad_char_type,
+    invalid_file_type
+};

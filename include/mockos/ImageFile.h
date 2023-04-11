@@ -16,8 +16,3 @@ private:
     std::vector<char> contents;
     char size;
 };
-
-enum return_values {
-    pass,
-    invalidOperation = 2
-};

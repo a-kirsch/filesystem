@@ -36,13 +36,16 @@ int SimpleFileSystem::createFile(string fileName)
     {
         AbstractFile * file = new TextFile(fileName);
         files.insert(std::pair<string, AbstractFile *>(fileName, file) );
+        return pass;
     }
-    else
+    else if (extensionType == ".img")
     {
         AbstractFile * file = new ImageFile(fileName);
         files.insert(std::pair<string, AbstractFile *>(fileName, file) );
+        return pass;
     }
-    return pass;
+    return invalid_file_type;
+
 }
 
 AbstractFile * SimpleFileSystem::openFile(string fileName) //Ask TA if opening the file is anything other than placing it in the openFile set
