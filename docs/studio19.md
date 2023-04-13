@@ -15,11 +15,14 @@ As the answer to this question, describe the sequence of communication between a
 visitor and the object it visits. Try creating an “interaction diagram” on paper or the board
 for this pattern
 
-- The sequence of interaction is as follows. (Ask Shidal)
+- The sequence of interaction is as follows. Visitor declares a Visit operation for each class of ConcreteElement in the object structure. The
+  operation’s name and signature identifies the class that sends the Visit request to the visitor. That
+  lets the visitor determine the concrete class of the element being visited. The concrete visitor implements each operation declared by Visitor. Element declares an Accept operation that takes a visitor as an argument.
 
 As the answer to this question, discuss the concept of “delegation” within your group.
 Describe how the visitor pattern uses delegation to add additional functionality to a family
 of classes without cluttering their interface
 
-- (Ask Shidal)
-
+Delegation executes a member function of one object (receiver) using the state of
+another object (sender). The receiver member function is passed a pointer to the
+sender, giving it access to the sender’s state.

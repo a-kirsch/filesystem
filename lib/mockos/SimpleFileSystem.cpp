@@ -6,6 +6,34 @@
 #include <iostream>
 using namespace std;
 
+// Commented out for step 5 of studio 18
+//int SimpleFileSystem::createFile(string fileName)
+//{
+//    if (files.find(fileName) != files.end() )
+//    {
+//        cout << "File already exists." << endl;
+//        return file_already_exists;
+//    }
+//
+//    string extensionType = fileName.substr(fileName.find('.') ); //Do I need to account for when non-file type is passed?
+//
+//    if (extensionType == ".txt" )
+//    {
+//        AbstractFile * file = new TextFile(fileName);
+//        files.insert(std::pair<string, AbstractFile *>(fileName, file) );
+//        return pass;
+//    }
+//    else if (extensionType == ".img")
+//    {
+//        AbstractFile * file = new ImageFile(fileName);
+//        files.insert(std::pair<string, AbstractFile *>(fileName, file) );
+//        return pass;
+//    }
+//    return invalid_file_type;
+//
+//}
+
+
 int SimpleFileSystem::addFile(string fileName, AbstractFile * abstractFile)
 {
     if (files.find(fileName) != files.end() )
