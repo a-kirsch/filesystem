@@ -24,5 +24,6 @@ protected:
 
 enum command_return_values
 {
-    commandTaken = 1
+    commandTaken = 1,
+    quit = 2
 };
