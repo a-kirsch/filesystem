@@ -2,14 +2,27 @@
 #include "AbstractFileSystem.h"
 #include "AbstractFileFactory.h"
 
+
 #include <map>
 #include <string>
 #pragma once
 
-class CommandPrompt: public AbstractCommand {
-public:
-    std::map<std::string,AbstractCommand *>() map; // double check this syntax
+class CommandPrompt {
+    std::map<std::string,AbstractCommand *> map;
     AbstractFileSystem * systemPtr;
     AbstractFileFactory * factoryPtr;
+public:
+    CommandPrompt();
+    void setFileSystem( AbstractFileSystem *);
+    void setFileFactory( AbstractFileFactory *);
+    int addCommand(std::string, AbstractCommand *);
+    int run();
+protected:
+    void listCommands();
+    std::string prompt();
+};
 
+enum command_return_values
+{
+    commandTaken = 1
 };
