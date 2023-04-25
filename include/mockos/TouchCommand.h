@@ -1,7 +1,7 @@
+#pragma once
 #include "AbstractFileFactory.h"
 #include "AbstractFileSystem.h"
 #include "AbstractCommand.h"
-#pragma once
 
 class TouchCommand : public AbstractCommand {
     AbstractFileFactory * factoryPtr;
