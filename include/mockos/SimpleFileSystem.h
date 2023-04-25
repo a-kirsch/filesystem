@@ -11,6 +11,7 @@ public:
     virtual int addFile(std::string, AbstractFile *);
     virtual int deleteFile(std::string);
     // virtual int createFile(std::string);
+    virtual std::set<std::string> getFileNames();
     virtual AbstractFile * openFile(std::string);
     virtual int closeFile(AbstractFile *);
 };

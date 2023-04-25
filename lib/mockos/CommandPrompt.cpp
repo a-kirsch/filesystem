@@ -1,4 +1,5 @@
 #include "../../include/mockos/CommandPrompt.h"
+#include "../../include/mockos/AbstractCommand.h"
 #include <iostream>
 #include <sstream>
 
@@ -66,7 +67,8 @@ int CommandPrompt::run()
             {
                 if (map.find(input) != map.end() )
                 {
-                    //"Execute" the command, whatever that means
+                    int i = pass;
+                    map.find(input)->second->execute("");
                 }
                 else
                 {
@@ -86,7 +88,7 @@ int CommandPrompt::run()
                         {
                             if (map.find(secondWord) != map.end() )
                             {
-                                //Call display info on it
+                                map.find(secondWord)->second->displayInfo();
                             }
                             else
                             {
@@ -98,7 +100,7 @@ int CommandPrompt::run()
                     {
                         if (map.find(firstWord) != map.end() )
                         {
-                            //"Execute" the command, with the second word as the input.
+                            map.find(secondWord)->second->execute("");
                         }
                         else
                         {

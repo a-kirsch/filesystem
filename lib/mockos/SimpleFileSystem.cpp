@@ -4,6 +4,7 @@
 #include "../../include/mockos/TextFile.h"
 #include <set>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 // Commented out for step 5 of studio 18
@@ -96,5 +97,21 @@ int SimpleFileSystem::deleteFile(string fileName)
         cout << "File does not exist."  << endl;
         return file_does_not_exist;
     }
+}
+
+set<string> SimpleFileSystem::getFileNames() {
+    set<string> names;
+    int count = 0;
+    for (auto const &pair: files) {
+        count++;
+        if(count>1)
+        {
+            cout << endl;
+            count = 0;
+        }
+        names.insert(pair.first);
+        cout << setw(20) << pair.first;
+    }
+    return names;
 }
 
