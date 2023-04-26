@@ -19,7 +19,7 @@ void LSCommand::displayInfo()
 int LSCommand::execute(string input)
 {
     set<string> fileNames = systemPtr->getFileNames();
-    if (input == "-m")
+    if (input == "-m") // does input just display the end or wouldn't it be ls -m ? -ak
     {
         for (string file: fileNames)
         {
