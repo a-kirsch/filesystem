@@ -5,9 +5,9 @@
 
 class RemoveCommand : public AbstractCommand
 {
-    std::string input;
+    AbstractFileSystem * systemPtr;
 public:
-    RemoveCommand(std::string);
+    RemoveCommand(AbstractFileSystem * );
     virtual int execute(std::string);
     virtual void displayInfo();
     ~RemoveCommand() =default;
