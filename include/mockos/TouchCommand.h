@@ -2,6 +2,7 @@
 #include "AbstractFileFactory.h"
 #include "AbstractFileSystem.h"
 #include "AbstractCommand.h"
+#include "PasswordProxy.h"
 
 class TouchCommand : public AbstractCommand {
     AbstractFileFactory * factoryPtr;
@@ -18,5 +19,6 @@ enum add_file {
     success,
     failed_creation,
     repeat_file,
-    passed_a_nullptr
+    passed_a_nullptr,
+    invalidArgs
 };

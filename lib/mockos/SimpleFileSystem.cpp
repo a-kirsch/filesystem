@@ -1,5 +1,4 @@
 #include "../../include/mockos/SimpleFileSystem.h"
-#include "RemoveCommand.cpp"
 //Not sure if the two below are the correct includes statements
 #include "../../include/mockos/ImageFile.h"
 #include "../../include/mockos/TextFile.h"

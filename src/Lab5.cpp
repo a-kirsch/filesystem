@@ -11,5 +11,10 @@
 using namespace std;
 
 int main() {
-    //Test the LS Command
+    string s = "0123456789";
+
+    string sl = s.substr(s.find("3"));
+
+    cout << sl << endl;
+
 }

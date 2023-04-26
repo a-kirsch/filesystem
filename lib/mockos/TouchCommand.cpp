@@ -11,31 +11,73 @@ TouchCommand::TouchCommand(AbstractFileSystem * afs, AbstractFileFactory * aff) 
 }
 
 void TouchCommand::displayInfo() {
-    cout << "touch creates a file, touch can be invoked with the command: touch <filename>" << endl;
+    cout << "touch creates a file, touch can be invoked with the command: touch <filename>, or "
+            "touch <filename> -p to create a password protected file" << endl;
 }
 
-int TouchCommand::execute(string filename) {
-    AbstractFile * af = factoryPtr->createFile(filename);
-    if(af==nullptr)
+int TouchCommand::execute(string input) {
+    int spaceIndex = input.find(' ');
+    if (spaceIndex == string::npos) //There is no space, the input is a single word
     {
-        cout << "Failed to create file :(" << endl;
-        return failed_creation;
+        AbstractFile * af = factoryPtr->createFile(input);
+        if(af==nullptr)
+        {
+            cout << "Failed to create file :(" << endl;
+            return failed_creation;
+        }
+        else
+        {
+            int added = systemPtr->addFile(input, af);
+
+            if(added == file_already_exists)
+            {
+                cout << "The file you tried to add already exists in the file system :(" << endl;
+                systemPtr->deleteFile(input);
+                return repeat_file;
+            }
+            else if(added == nullptr_error)
+            {
+                cout << "Couldn't add file because a null pointer was passed :(" << endl;
+                return passed_a_nullptr;
+            }
+            return success;
+        }
     }
     else
     {
-        int added = systemPtr->addFile(filename, af);
-
-        if(added == file_already_exists)
+        string command = input.substr(spaceIndex + 1);
+        if (command == "-m")
         {
-            cout << "The file you tried to add already exists in the file system :(" << endl;
-            systemPtr->deleteFile(filename);
-            return repeat_file;
+            AbstractFile * af = factoryPtr->createFile(input);
+            if(af==nullptr)
+            {
+                cout << "Failed to create file :(" << endl;
+                return failed_creation;
+            }
+            else
+            {
+                cout << "What do you want password for your file to be?";
+                string password;
+                cin >> password;
+                PasswordProxy * proxy = new PasswordProxy(af, password);
+                int added = systemPtr->addFile(input, proxy);
+                if(added == file_already_exists)
+                {
+                    cout << "The file you tried to add already exists in the file system :(" << endl;
+                    systemPtr->deleteFile(input);
+                    return repeat_file;
+                }
+                else if(added == nullptr_error)
+                {
+                    cout << "Couldn't add file because a null pointer was passed :(" << endl;
+                    return passed_a_nullptr;
+                }
+                return success;
+            }
         }
-        else if(added == nullptr_error)
+        else
         {
-            cout << "Couldn't add file because a null pointer was passed :(" << endl;
-            return passed_a_nullptr;
+            return invalidArgs;
         }
-            return success;
     }
 }
