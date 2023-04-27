@@ -1,5 +1,4 @@
 #include "../../include/mockos/RemoveCommand.h"
-#include "SimpleFileSystem.cpp"
 #include <iostream>
 #include <memory>
 

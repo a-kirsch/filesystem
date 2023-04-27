@@ -1,5 +1,6 @@
 #include "../../include/mockos/TouchCommand.h"
-#include "SimpleFileFactory.cpp"
+#include "../../include/mockos/SimpleFileFactory.h"
+#include "../../include/mockos/SimpleFileSystem.h"
 #include <iostream>
 #include <memory>
 

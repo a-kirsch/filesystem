@@ -1,5 +1,5 @@
 #include "../../include/mockos/CatCommand.h"
-#include "SimpleFileFactory.cpp"
+#include "../../include/mockos/SimpleFileFactory.h"
 #include <iostream>
 #include <memory>
 
@@ -24,28 +24,38 @@ int CatCommand::execute(string command)
         AbstractFile * file = systemPtr->openFile(command);
         if (file != nullptr)
         {
-            cout << "Please input data to be appended to the file. Type ':wq' to save and quit or ':q' to quit"
+            cout << "Please input data to override the file. Type ':wq' to save and quit or ':q' to quit"
                     "without saving.";
             string input;
-            vector<char> fileChanges;
-            while (getline(cin, input) )
+            string total;
+            while (input != ":q" && input != ":wq")
             {
-                if (input == ":q")
+                total += input;
+                total += "\n";
+                getline(cin, input);
+            }
+            if (input == ":q")
+            {
+                systemPtr->closeFile(file);
+                return pass;
+            }
+            else
+            {
+                vector<char> fileChanges;
+                for(int i = 0; i < total.length(); ++i)
                 {
-                    return pass;
+                    fileChanges.push_back(total.at(i));
                 }
-                else if (input == ":wq")
+                if (file->write(fileChanges) )
                 {
-                    file->write(fileChanges);
+                    systemPtr->closeFile(file);
                     return pass;
                 }
                 else
                 {
-                    for(int i = 0; i < input.length(); ++i)
-                    {
-                        fileChanges.push_back(input.at(i)); // pushed back by char array, is this wills solution? -ak
-                    } }
-                cout << endl; //Is this how we reinsert a new line character?
+                    systemPtr->closeFile(file);
+                    return failed_addition;
+                }
             }
         }
         else
@@ -64,28 +74,42 @@ int CatCommand::execute(string command)
             {
                 cout << "Please input data to be appended to the file. Type ':wq' to save and quit or ':q' to quit"
                         "without saving.";
-                file->read(); //Is this the correct way to display a file's contents? I forget honestly
-                string input;
-                vector<char> fileChanges;
-                while (getline(cin, input) )
+                vector<char> fileContents = file->read(); //Display the current file contents
+                for (char character: fileContents)
                 {
-                    if (input == ":q")
+                    cout << character;
+                }
+                cout << endl;
+                string input;
+                string total;
+                while (input != ":q" && input != ":wq")
+                {
+                    total += input;
+                    total += "\n";
+                    getline(cin, input);
+                }
+                if (input == ":q")
+                {
+                    systemPtr->closeFile(file);
+                    return pass;
+                }
+                else
+                {
+                    vector<char> fileChanges;
+                    for(int i = 0; i < total.length(); ++i)
                     {
-                        return pass;
+                        fileChanges.push_back(total.at(i));
                     }
-                    else if (input == ":wq")
+                    if (file->append(fileChanges) )
                     {
-                        file->append(fileChanges);
+                        systemPtr->closeFile(file);
                         return pass;
                     }
                     else
                     {
-                        for(int i = 0; i < input.length(); ++i)
-                        {
-                            fileChanges.push_back(input.at(i)); // pushed back by char array, is this wills solution? -ak
-                        }
+                        systemPtr->closeFile(file);
+                        return failed_addition;
                     }
-                    cout << endl; //Is this how we reinsert a new line character?
                 }
             }
             else

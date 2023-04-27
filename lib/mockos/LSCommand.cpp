@@ -1,5 +1,5 @@
 #include "../../include/mockos/LSCommand.h"
-#include "SimpleFileFactory.cpp"
+#include "../../include/mockos/SimpleFileSystem.h"
 #include <iostream>
 #include <iomanip>
 #include <memory>
