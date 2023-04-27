@@ -48,7 +48,7 @@ int LSCommand::execute(string input)
         auto outputIter = fileNames.begin();
         for (int i = 0; i < fileNames.size(); ++i)
         {
-            if ( i % commandsPerLine == 0)
+            if ( i % commands_per_line == 0)
             {
                 int bufferSpace = 30 - outputIter->length();
                 cout << * outputIter << setw(bufferSpace);
@@ -63,7 +63,7 @@ int LSCommand::execute(string input)
     }
     else
     {
-        return incorrectArguments;
+        return invalid_arguments;
     }
 }
 

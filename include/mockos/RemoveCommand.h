@@ -13,7 +13,6 @@ public:
     ~RemoveCommand() =default;
 };
 
-enum remove_command {
-    success = 0,
-    failure_to_remove = 1
+enum remove_return_values {
+    failed_removal = 1
 };

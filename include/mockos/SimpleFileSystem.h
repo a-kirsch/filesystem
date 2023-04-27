@@ -18,10 +18,12 @@ public:
 
 enum simple_file_system_return_values {
     nullptr_error = -1,
-    file_open = 2,
-    file_already_exists = 3,
-    file_already_closed = 4,
-    file_does_not_exist = 5,
+    file_open = -2,
+    file_already_exists = -3,
+    file_already_closed = -4,
+    file_does_not_exist = -5,
+    invalid_arguments = 3,
+
 };
 
 

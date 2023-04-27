@@ -15,10 +15,6 @@ public:
 
 };
 
-enum add_file {
-    success,
-    failed_creation,
-    repeat_file,
-    passed_a_nullptr,
-    invalidArgs
+enum add_return_values {
+    failed_creation = 1
 };

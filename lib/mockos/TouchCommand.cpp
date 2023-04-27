@@ -33,14 +33,14 @@ int TouchCommand::execute(string input) {
             {
                 cout << "The file you tried to add already exists in the file system :(" << endl;
                 systemPtr->deleteFile(input);
-                return repeat_file;
+                return file_already_exists;
             }
             else if(added == nullptr_error)
             {
                 cout << "Couldn't add file because a null pointer was passed :(" << endl;
-                return passed_a_nullptr;
+                return nullptr_error;
             }
-            return success;
+            return pass;
         }
     }
     else
@@ -65,19 +65,19 @@ int TouchCommand::execute(string input) {
                 {
                     cout << "The file you tried to add already exists in the file system :(" << endl;
                     systemPtr->deleteFile(input);
-                    return repeat_file;
+                    return file_already_exists;
                 }
                 else if(added == nullptr_error)
                 {
                     cout << "Couldn't add file because a null pointer was passed :(" << endl;
-                    return passed_a_nullptr;
+                    return nullptr_error;
                 }
-                return success;
+                return pass;
             }
         }
         else
         {
-            return invalidArgs;
+            return invalid_arguments;
         }
     }
 }

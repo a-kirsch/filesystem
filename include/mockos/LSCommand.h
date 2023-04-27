@@ -13,9 +13,7 @@ public:
     ~LSCommand() =default;
 };
 
-enum ls_command {
-    failure = 1,
-    commandsPerLine = 2,
-    incorrectArguments
+enum ls_return_values {
+    commands_per_line = 2
 };
 

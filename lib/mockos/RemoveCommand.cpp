@@ -12,13 +12,13 @@ RemoveCommand::RemoveCommand(AbstractFileSystem * fileSystem)
 
 int RemoveCommand::execute(string fileName)
 {
-    if(systemPtr->deleteFile(fileName)==success)
+    if(systemPtr->deleteFile(fileName)==pass)
     {
-        return success;
+        return pass;
     }
     else
     {
-        return failure_to_remove;
+        return failed_removal;
     }
 }
 
