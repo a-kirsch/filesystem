@@ -41,8 +41,10 @@ int CatCommand::execute(string command)
                 }
                 else
                 {
-                    fileChanges.push_back(input); //Input is a string, how do we write in the contents when fileChanges only accepts a char
-                }
+                    for(int i = 0; i < input.length(); ++i)
+                    {
+                        fileChanges.push_back(input.at(i)); // pushed back by char array, is this wills solution? -ak
+                    } }
                 cout << endl; //Is this how we reinsert a new line character?
             }
         }
@@ -78,7 +80,10 @@ int CatCommand::execute(string command)
                     }
                     else
                     {
-                        fileChanges.push_back(input); //Input is a string, how do we write in the contents when fileChanges only accepts a char
+                        for(int i = 0; i < input.length(); ++i)
+                        {
+                            fileChanges.push_back(input.at(i)); // pushed back by char array, is this wills solution? -ak
+                        }
                     }
                     cout << endl; //Is this how we reinsert a new line character?
                 }

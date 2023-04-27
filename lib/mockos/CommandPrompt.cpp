@@ -55,6 +55,7 @@ int CommandPrompt::run()
         string input = prompt();
         if (input == "q")
         {
+            cout << "Goodbye" << endl;
             return quit;
         }
         else if (input == "help")

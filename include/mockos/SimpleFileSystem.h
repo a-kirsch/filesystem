@@ -22,6 +22,7 @@ enum simple_file_system_return_values {
     file_already_exists = -3,
     file_already_closed = -4,
     file_does_not_exist = -5,
+    success = 0,
     invalid_arguments = 3,
 
 };
