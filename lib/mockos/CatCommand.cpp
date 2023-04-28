@@ -69,7 +69,7 @@ int CatCommand::execute(string command)
         string secondCommand = command.substr(spaceIndex + 1);
         if (secondCommand == "-a")
         {
-            string fileName = command.substr(0, spaceIndex - 1);
+            string fileName = command.substr(0, spaceIndex);
             AbstractFile * file = systemPtr->openFile(fileName);
             if (file != nullptr)
             {

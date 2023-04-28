@@ -31,6 +31,8 @@ int DisplayCommand::execute(std::string input)
                 cout << character;
             }
             cout << endl;
+            systemPtr->closeFile(file);
+            return pass;
         }
         else
         {
@@ -48,6 +50,8 @@ int DisplayCommand::execute(std::string input)
             {
                 BasicDisplayVisitor * visitor = new BasicDisplayVisitor();
                 file->accept(visitor);
+                systemPtr->closeFile(file);
+                return pass;
             }
             else
             {

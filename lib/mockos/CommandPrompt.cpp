@@ -81,6 +81,7 @@ int CommandPrompt::run()
                 istringstream iss (input);
                 string firstWord;
                 string secondWord;
+                string thirdWord;
                 if (iss >> firstWord)
                 {
                     if (firstWord == "help")
@@ -101,6 +102,10 @@ int CommandPrompt::run()
                     {
                         if(iss>>secondWord)
                         {
+                            if(iss>>thirdWord)
+                            {
+                                secondWord = secondWord + " " + thirdWord;
+                            }
                             if (map.find(firstWord) != map.end() )
                             {
                                 map.find(firstWord)->second->execute(secondWord);
