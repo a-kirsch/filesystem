@@ -99,13 +99,27 @@ int CommandPrompt::run()
                     }
                     else
                     {
+                        if(iss>>secondWord)
+                        {
+                            if (map.find(firstWord) != map.end() )
+                            {
+                                map.find(firstWord)->second->execute(secondWord);
+                            }
+                            else
+                            {
+                                cout << "Command does not exist.";
+                            }
+                        }
+                        else
+                        {
                         if (map.find(firstWord) != map.end() )
                         {
-                            map.find(secondWord)->second->execute("");
+                            map.find(firstWord)->second->execute("");
                         }
                         else
                         {
                             cout << "Command does not exist.";
+                        }
                         }
                     }
                 }

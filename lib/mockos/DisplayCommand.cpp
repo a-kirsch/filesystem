@@ -28,7 +28,7 @@ int DisplayCommand::execute(std::string input)
             vector<char> contents = file->read();
             for (char character: contents)
             {
-                cout << character << " ";
+                cout << character;
             }
             cout << endl;
         }

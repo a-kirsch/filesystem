@@ -17,6 +17,11 @@ void TouchCommand::displayInfo() {
 }
 
 int TouchCommand::execute(string input) {
+    if(input=="")
+    {
+        cout << "You must pass a filename with touch. e.g.: touch <filename>" << endl;
+        return failed_creation;
+    }
     int spaceIndex = input.find(' ');
     if (spaceIndex == string::npos) //There is no space, the input is a single word
     {

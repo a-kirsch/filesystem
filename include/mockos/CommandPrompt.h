@@ -17,6 +17,7 @@ public:
     void setFileFactory( AbstractFileFactory *);
     int addCommand(std::string, AbstractCommand *);
     int run();
+    ~CommandPrompt(); //impliment with map
 protected:
     void listCommands();
     std::string prompt();

@@ -25,7 +25,7 @@ int CatCommand::execute(string command)
         AbstractFile * file = systemPtr->openFile(command);
         if (file != nullptr)
         {
-            cout << "Please input data to override the file. Type ':wq' to save and quit or ':q' to quit"
+            cout << "Please input data to override the file. Type ':wq' to save and quit or ':q' to quit "
                     "without saving.";
             string input;
             string total;

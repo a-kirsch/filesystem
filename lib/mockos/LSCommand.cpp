@@ -13,13 +13,13 @@ LSCommand::LSCommand(AbstractFileSystem * afs)
 
 void LSCommand::displayInfo()
 {
-    cout << "ls lists all available commands, ls can be invoked with the command ls " << endl;
+    cout << "ls lists all available commands, ls can be invoked with the command 'ls' " << endl;
 }
 
 int LSCommand::execute(string input)
 {
     set<string> fileNames = systemPtr->getFileNames();
-    if (input == "-m") // does input just display the end or wouldn't it be ls -m ? -ak
+    if (input == "-m")
     {
         for (string file: fileNames)
         {
@@ -59,6 +59,7 @@ int LSCommand::execute(string input)
             }
             outputIter++;
         }
+        cout << endl;
         return pass;
     }
     else
