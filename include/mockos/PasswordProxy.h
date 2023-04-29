@@ -16,6 +16,7 @@ public:
     unsigned int getSize();
     std::string getName();
     void accept(AbstractFileVisitor *);
+    virtual AbstractFile* clone(AbstractFile*, AbstractFileSystem*);
 protected:
     std::string passwordPrompt();
     bool checkPassword(std::string);

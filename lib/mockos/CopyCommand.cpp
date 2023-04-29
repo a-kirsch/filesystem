@@ -34,10 +34,9 @@ int CopyCommand::execute(std::string input)
 
         if (file != nullptr)
         {
-            //Ask the TA's about the prototype pattern and how to use it
             BasicDisplayVisitor * visitor = new BasicDisplayVisitor();
             file->accept(visitor);
-            //write a clone function for each file type in AbstractFile
+            file->clone(file,systemPtr);
             return pass; //change
         }
         else

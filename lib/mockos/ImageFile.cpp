@@ -49,3 +49,11 @@ string ImageFile::getName() {
 void ImageFile::accept(AbstractFileVisitor * abstractFileVisitor) {
     abstractFileVisitor->visit_ImageFile(this);
 }
+
+AbstractFile* ImageFile::clone(AbstractFile* original, AbstractFileSystem* afs)
+{
+    AbstractFile* copy = new ImageFile("copy");
+    afs->addFile("copy", copy);
+    copy->write(original->read());
+    return copy;
+}

@@ -1,4 +1,5 @@
 #include "../../include/mockos/AbstractFileVisitor.h"
+#include "../../include/mockos/SimpleFileSystem.h"
 #include <string>
 #include <iostream>
 
@@ -36,3 +37,10 @@ void TextFile::accept(AbstractFileVisitor * abstractFileVisitor) {
     abstractFileVisitor->visit_TextFile(this);
 }
 
+AbstractFile* TextFile::clone(AbstractFile* original, AbstractFileSystem* afs)
+{
+    AbstractFile* copy = new TextFile("copy");
+    afs->addFile("copy", copy);
+    copy->append(original->read());
+    return copy;
+}

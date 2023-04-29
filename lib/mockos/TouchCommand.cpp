@@ -52,9 +52,10 @@ int TouchCommand::execute(string input) {
     else
     {
         string command = input.substr(spaceIndex + 1);
-        if (command == "-m")
+        if (command == "-p")
         {
-            AbstractFile * af = factoryPtr->createFile(input);
+            string fileName = input.substr(0, spaceIndex);
+            AbstractFile * af = factoryPtr->createFile(fileName);
             if(af==nullptr)
             {
                 cout << "Failed to create file :(" << endl;
@@ -66,11 +67,11 @@ int TouchCommand::execute(string input) {
                 string password;
                 cin >> password;
                 PasswordProxy * proxy = new PasswordProxy(af, password);
-                int added = systemPtr->addFile(input, proxy);
+                int added = systemPtr->addFile(fileName, proxy);
                 if(added == file_already_exists)
                 {
                     cout << "The file you tried to add already exists in the file system :(" << endl;
-                    systemPtr->deleteFile(input);
+                    systemPtr->deleteFile(fileName);
                     return file_already_exists;
                 }
                 else if(added == nullptr_error)
