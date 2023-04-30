@@ -25,12 +25,8 @@ int DisplayCommand::execute(std::string input)
         AbstractFile * file = systemPtr->openFile(input);
         if (file != nullptr)
         {
-            vector<char> contents = file->read();
-            for (char character: contents)
-            {
-                cout << character;
-            }
-            cout << endl;
+            BasicDisplayVisitor * visitor = new BasicDisplayVisitor();
+            file->accept(visitor);
             systemPtr->closeFile(file);
             return pass;
         }
@@ -44,12 +40,16 @@ int DisplayCommand::execute(std::string input)
         string secondCommand = input.substr(spaceIndex + 1);
         if (secondCommand == "-d")
         {
-            string fileName = input.substr(0, spaceIndex - 1);
+            string fileName = input.substr(0, spaceIndex);
             AbstractFile * file = systemPtr->openFile(fileName);
             if (file != nullptr)
             {
-                BasicDisplayVisitor * visitor = new BasicDisplayVisitor();
-                file->accept(visitor);
+                vector<char> contents = file->read();
+                for (char character: contents)
+                {
+                    cout << character;
+                }
+                cout << endl;
                 systemPtr->closeFile(file);
                 return pass;
             }
