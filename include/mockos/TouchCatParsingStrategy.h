@@ -4,9 +4,9 @@
 #include "AbstractCommand.h"
 #include <vector>
 
-class RenameParsingStrategy : public AbstractParsingStrategy {
+class TouchCatParsingStrategy : public AbstractParsingStrategy {
 public:
-    RenameParsingStrategy();
+    TouchCatParsingStrategy();
     virtual std::vector<std::string> parse(std::string);
 };
 

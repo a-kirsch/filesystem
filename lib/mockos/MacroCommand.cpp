@@ -5,7 +5,8 @@
 
 using namespace std;
 
-MacroCommand::MacroCommand() {};
+MacroCommand::MacroCommand() {}
+
 
 int MacroCommand::addCommmand(AbstractCommand * command)
 {
@@ -16,6 +17,8 @@ int MacroCommand::addCommmand(AbstractCommand * command)
     }
     return nullptr_error;
 }
+
+void MacroCommand::displayInfo(){}
 
 int MacroCommand::setParsingStrategy(AbstractParsingStrategy * strategy)
 {

@@ -4,6 +4,8 @@
 
 using namespace std;
 
+RenameParsingStrategy::RenameParsingStrategy() {};
+
 std::vector<std::string> RenameParsingStrategy::parse(std::string fileAndName)
 {
     vector<string> commandList;

@@ -12,6 +12,7 @@ public:
     virtual int execute(std::string);
     int addCommmand(AbstractCommand *);
     int setParsingStrategy(AbstractParsingStrategy *);
+    virtual void displayInfo();
     ~MacroCommand() =default;
 };
 

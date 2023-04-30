@@ -11,6 +11,9 @@
 #include "mockos/CatCommand.h"
 #include "mockos/DisplayCommand.h"
 #include "mockos/CopyCommand.h"
+#include "mockos/MacroCommand.h"
+#include "mockos/RenameParsingStrategy.h"
+#include "mockos/TouchCatParsingStrategy.h"
 
 #include <iostream>
 
@@ -34,6 +37,18 @@ int main() {
     cp->addCommand("ds", dsCommand);
     AbstractCommand* cpCommand = new CopyCommand(sfs);
     cp->addCommand("cp", cpCommand);
+    MacroCommand* rnCommand = new MacroCommand();
+    rnCommand->addCommmand(cpCommand);
+    rnCommand->addCommmand(rmCommand);
+    AbstractParsingStrategy * rps = new RenameParsingStrategy();
+    rnCommand->setParsingStrategy(rps);
+    cp->addCommand("rn",rnCommand);
+    MacroCommand* tcCommand = new MacroCommand();
+    tcCommand->addCommmand(touchCommand);
+    tcCommand->addCommmand(catCommand);
+    AbstractParsingStrategy * tcps = new TouchCatParsingStrategy();
+    tcCommand->setParsingStrategy(tcps);
+    cp->addCommand("tc",tcCommand);
     cp->run();
     /* d
     delete lsCommand;
