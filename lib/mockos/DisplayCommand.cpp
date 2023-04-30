@@ -44,7 +44,7 @@ int DisplayCommand::execute(std::string input)
         string secondCommand = input.substr(spaceIndex + 1);
         if (secondCommand == "-d")
         {
-            string fileName = input.substr(0, spaceIndex - 1);
+            string fileName = input.substr(0, spaceIndex);
             AbstractFile * file = systemPtr->openFile(fileName);
             if (file != nullptr)
             {
