@@ -16,22 +16,32 @@ int ImageFile::write(vector<char> parameter) {
     {
         return size_mismatch;
     }
-    size = parameter[parameter.size() - 1]- '0'; // calling the .size member variable but we need to create an instance of the object
-    if ( (parameter.size() - 1) / size != size )
+    size = parameter[parameter.size() - 2]- '0'; // object
+    parameter.pop_back();
+    parameter.pop_back();
+    if ( parameter.size() -1 == size*size )
     {
-        return size_mismatch;
-    }
-    for(int i = 0; i < parameter.size(); ++i) {
-        if (i != parameter.size() - 1) {
-            if (parameter[i] != 'X' && parameter[i] != ' ') {
-                contents.clear();
-                size = 0;
-                return bad_char_type; // nonzero return value for bad char, to be replaced w enums when we use them later
+        for(int i = 1; i < parameter.size(); ++i) {
+            if (i != parameter.size() - 1) {
+                if (parameter[i] != 'X' && parameter[i] != ' ') {
+                    contents.clear();
+                    size = 0;
+                    return bad_char_type; // nonzero return value for bad char, to be replaced w enums when we use them later
+                }
             }
-            contents.push_back(parameter[i]);
+        }
+        try{
+            contents = parameter;
+            return pass;
+        }
+        catch(...) {
+            cout<<"write failed" << endl;
+            return 6; // change
         }
     }
-    return pass;
+    else{
+        return size_mismatch;
+    }
 }
 
 int ImageFile::append(vector<char>) {

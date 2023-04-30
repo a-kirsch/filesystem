@@ -16,5 +16,5 @@ public:
 private:
     std::string name;
     std::vector<char> contents;
-    char size;
+    char size; // should this be an int or char
 };

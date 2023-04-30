@@ -3,8 +3,8 @@
 #include "AbstractCommand.h"
 
 class CopyCommand : public AbstractCommand {
-public:
     AbstractFileSystem * systemPtr;
+public:
     CopyCommand(AbstractFileSystem *);
     virtual int execute(std::string);
     virtual void displayInfo();

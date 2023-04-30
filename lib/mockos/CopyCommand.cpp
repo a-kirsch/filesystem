@@ -6,10 +6,7 @@
 
 using namespace std;
 
-CopyCommand::CopyCommand(AbstractFileSystem * afs)
-{
-    systemPtr = afs;
-}
+CopyCommand::CopyCommand(AbstractFileSystem * afs): systemPtr(afs){}
 
 void CopyCommand::displayInfo()
 {
@@ -35,12 +32,23 @@ int CopyCommand::execute(std::string input)
         if (file != nullptr)
         {
             AbstractFile * copy = file->clone(newFileName);
-            systemPtr->addFile(copy->getName(), copy);
-            return pass;
+            if(systemPtr->addFile(copy->getName(), copy) == pass)
+            {
+                systemPtr->closeFile(file);
+                return pass;
+            }
+            else
+            {
+                systemPtr->closeFile(file);
+                delete(copy);
+                cout << "File failed to add to system" << endl;
+                return failed_addition;
+            }
         }
         else
         {
             cout << "File to copy failed to open." << endl;
+            systemPtr->closeFile(file);
             return file_open;
         }
     }
