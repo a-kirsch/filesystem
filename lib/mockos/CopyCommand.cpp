@@ -28,7 +28,7 @@ int CopyCommand::execute(std::string input)
     else
     {
         string newFileName = input.substr(spaceIndex + 1);
-        string fileToCopy = input.substr(spaceIndex);
+        string fileToCopy = input.substr(0, spaceIndex);
 
         AbstractFile * file = systemPtr->openFile(fileToCopy);
 
