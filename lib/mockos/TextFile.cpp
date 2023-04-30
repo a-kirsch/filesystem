@@ -39,7 +39,7 @@ void TextFile::accept(AbstractFileVisitor * abstractFileVisitor) {
 
 AbstractFile* TextFile::clone(std::string name)
 {
-    AbstractFile * copy = new TextFile(name);
+    AbstractFile * copy = new TextFile(name + ".txt");
     copy->write(this->read());
     return copy;
 }
