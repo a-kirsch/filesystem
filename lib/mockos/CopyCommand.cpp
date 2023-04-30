@@ -35,7 +35,7 @@ int CopyCommand::execute(std::string input)
         if (file != nullptr)
         {
             AbstractFile * copy = file->clone("clone");
-            return pass; //change
+            return pass;
         }
         else
         {
