@@ -1,5 +1,6 @@
 #pragma once
-#include "AbstractFile.h"
+#include "TextFile.h"
+#include "ImageFile.h"
 #include <vector>
 #include <string>
 
@@ -16,7 +17,7 @@ public:
     unsigned int getSize();
     std::string getName();
     void accept(AbstractFileVisitor *);
-    virtual AbstractFile* clone(AbstractFile*, AbstractFileSystem*);
+    virtual AbstractFile* clone(std::string);
 protected:
     std::string passwordPrompt();
     bool checkPassword(std::string);

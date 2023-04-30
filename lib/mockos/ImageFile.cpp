@@ -50,10 +50,11 @@ void ImageFile::accept(AbstractFileVisitor * abstractFileVisitor) {
     abstractFileVisitor->visit_ImageFile(this);
 }
 
-AbstractFile* ImageFile::clone(AbstractFile* original, AbstractFileSystem* afs)
+AbstractFile* ImageFile::clone(std::string name)
 {
-    AbstractFile* copy = new ImageFile("copy");
-    afs->addFile("copy", copy);
-    copy->write(original->read());
+    AbstractFile* copy = new ImageFile(name);
+    vector<char> newContents = this->read();
+    newContents.push_back(size + '0'); //Push back the size of each row
+    copy->write(newContents);
     return copy;
 }

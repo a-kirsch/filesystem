@@ -12,7 +12,7 @@ public:
     unsigned int getSize();
     std::string getName();
     void accept(AbstractFileVisitor *);
-    virtual AbstractFile* clone(AbstractFile*, AbstractFileSystem*);
+    virtual AbstractFile* clone(std::string);
 private:
     std::vector<char> contents;
     std::string name;

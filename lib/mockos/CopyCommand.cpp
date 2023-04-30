@@ -34,9 +34,7 @@ int CopyCommand::execute(std::string input)
 
         if (file != nullptr)
         {
-            BasicDisplayVisitor * visitor = new BasicDisplayVisitor();
-            file->accept(visitor);
-            file->clone(file,systemPtr);
+            AbstractFile * copy = file->clone("clone");
             return pass; //change
         }
         else

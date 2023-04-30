@@ -89,12 +89,11 @@ void PasswordProxy::accept(AbstractFileVisitor * abstractFileVisitor)
     }
 }
 
-AbstractFile* PasswordProxy::clone(AbstractFile* original, AbstractFileSystem* afs)
+AbstractFile* PasswordProxy::clone(std::string)
 {
     //fix (2 more steps?)
     AbstractFile* copy = new TextFile("copy");
-    afs->addFile("copy", copy);
-    copy->append(original->read());
+    copy->append(this->read());
     return copy;
 }
 
