@@ -35,6 +35,7 @@ int CopyCommand::execute(std::string input)
         if (file != nullptr)
         {
             AbstractFile * copy = file->clone("clone");
+            systemPtr->addFile("clone", copy);
             return pass;
         }
         else
