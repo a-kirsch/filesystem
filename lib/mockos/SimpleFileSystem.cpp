@@ -57,7 +57,6 @@ AbstractFile * SimpleFileSystem::openFile(string fileName) //Ask TA if opening t
     {
        if (openFiles.find(files.at(fileName) ) == openFiles.end() ) //Check if the file is already open (look in openFiles)
        {
-            cout << "File open" << endl;
             openFiles.insert(files.at(fileName) );
             return files.at(fileName);
        }

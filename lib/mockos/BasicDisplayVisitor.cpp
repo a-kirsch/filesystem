@@ -19,12 +19,11 @@ void BasicDisplayVisitor::visit_TextFile(TextFile * textFile) {
 void BasicDisplayVisitor::visit_ImageFile(ImageFile * imageFile) {
     vector<char> copyContents = imageFile->read();
     int size = sqrt(copyContents.size());
-
     for(int h = size - 1; h >= 0; --h)
     {
         for(int w = 0; w < size; ++w)
         {
-            cout << copyContents[h*size + w];
+            cout << copyContents[h*size + w + 1];
         }
         cout << endl;
     }
