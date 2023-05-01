@@ -14,7 +14,7 @@ DisplayCommand::DisplayCommand(AbstractFileSystem * afs)
 void DisplayCommand::displayInfo()
 {
     cout << "display opens a file and displays its contents, display can be invoked with the command: 'ds <filename> -d' to "
-            "display just the data of a file or 'cat <filename>' to display the formatted contents of a file." << endl;
+            "display just the data of a file or 'ds <filename>' to display the formatted contents of a file." << endl;
 }
 
 int DisplayCommand::execute(std::string input)

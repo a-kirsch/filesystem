@@ -19,7 +19,7 @@ int CopyCommand::execute(std::string input)
     int spaceIndex = input.find(' ');
     if (spaceIndex == string::npos) //There is no space, the input is a single word
     {
-        cout << "Incorrect arguments for the copy command. You must pass in a file to copy and a new name for the copy" << endl;
+        cout << "Incorrect arguments for the copy command. You must pass in a file to copy and a new name for the copy." << endl;
         return invalid_arguments;
     }
     else
@@ -41,7 +41,7 @@ int CopyCommand::execute(std::string input)
             {
                 systemPtr->closeFile(file);
                 delete(copy);
-                cout << "File failed to add to system" << endl;
+                cout << "File failed to add to system." << endl;
                 return failed_addition;
             }
         }
