@@ -7,7 +7,9 @@
    If we don't call delete in the PasswordProxy file destructor we will get a memory leak because the pointer from the 
    AbstractFileSystem to the PasswordProxy will be destroyed, the PasswordProxy will be destroyed, but the abstractFile in 
    memory the PasswordProxy pointed to will continue to exist in memory. 
-4. read, write, append, the password functions and display all work as expected on different file types
+4. We made a file with a passwordProxy that had a password including numbers and letters. We wrote to the file and then were 
+   able to read the same text from the file, each time after entering the matching password to access the operations. This operates exactly as expected. 
+   If we entered an incorrect password, the program would not complete the command. This behavior is exactly as expected.
 5. No failed tests
 
 - 

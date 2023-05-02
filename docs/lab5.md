@@ -22,6 +22,25 @@
    tc
    touch
 
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help cat
+   cat overwrites or concatenates a file, cat can be invoked with the command: 'cat <filename> -a' to add to the contents of an existing file or 'cat <filename>' to overwrite the current contents of a file.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help cp
+   copy copies a file that currently exists in the file system and adds the new file to the file system, copy can be invoked with the command: 'cp <file_to_copy> <new_name_with_no_extension>'
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help ds
+   display opens a file and displays its contents, display can be invoked with the command: 'ds <filename> -d' to display just the data of a file or 'ds <filename>' to display the formatted contents of a file.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help ls
+   ls lists all available commands, ls can be invoked with the command 'ls'
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help rm
+   rm is used to remove files. It can be invoked with the command 'rm <filename>'
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help touch
+   touch creates a file, touch can be invoked with the command: touch <filename>, or touch <filename> -p to create a password protected file
+
 3. **touch and ls**:
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
    $   touch a.txt
@@ -122,26 +141,41 @@
    $   ls
    a.txt               a_copy.txt
 
-7. **password protection**
-   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-   $   touch a.txt -p
-   What do you want password for your file to be?1234
-   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-   $   cat a.txt
-   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I love CSE332!
-   :wq
-   Please input the password: 1234
-   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-   $   ds a.txt
-   Please input the password: 1234
-    I love CSE332!
-    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-    $   ls
-    a.txt
-    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-    $   rm a.txt
-    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-    $   ls
+   7. **password protection**
+      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+      $   touch a.txt -p
+      What do you want password for your file to be?1234
+      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+      $   cat a.txt
+      Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I love CSE332!
+      :wq
+      Please input the password: 1234
+      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+      $   ds a.txt
+      Please input the password: 1234
+       I love CSE332!
+       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+       $   ls
+       a.txt
+       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+       $   rm a.txt
+       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+       $   ls
+
+      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+      $   cp a.txt b
+      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+      $   ls
+      a.txt                    b.txt
+       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+       $   cat b.txt
+       Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I enjoy CSE332
+       :wq
+       Please input the password: 1234
+       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+       $   ds b.txt
+       Please input the password: 1234
+       I enjoy CSE332
 
 8. **rn**
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
