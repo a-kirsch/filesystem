@@ -33,7 +33,10 @@ int MacroCommand::setParsingStrategy(AbstractParsingStrategy * strategy)
 int MacroCommand::execute(std::string commands)
 {
     vector<string> commandInputs = parsingStrategy->parse(commands);
-
+    if(commandInputs.size()!=commandList.size())
+    {
+        return size_mismatch;
+    }
     for (int i = 0; i < commandList.size(); ++i)
     {
         if (commandList[i]->execute(commandInputs[i]) != pass)
