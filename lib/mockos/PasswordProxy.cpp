@@ -26,6 +26,7 @@ bool PasswordProxy::checkPassword(std::string word)
     }
     else
     {
+        cout << "You have entered the wrong password" << endl;
         return false;
     }
 }
