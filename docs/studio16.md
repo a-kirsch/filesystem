@@ -1,9 +1,11 @@
 # Studio 16
 Questions:
-2. An interface is an abstract class with virtual functions that can be overridden.
+1. Sam Singer, Adam Kirsch, Aroon Sankoh
+2. An interface is an abstract class with only pure virtual functions. These functions are overridden in classes that inherit
+   from the base class.
 3. 
     a. This is an example of interface inheritance
-    b. The member variables of the class should be private.
+    b. The member variables of the class should be private
 4. 
     a. We ran test cases for each of the different methods. First we tested if getName() and getSize() were working properly. 
     b. Then we checked to make sure the read(), write(), and append() functions were working properly by calling them in
@@ -65,4 +67,6 @@ Questions:
         
             return 0;
             };
-5. 
+
+5. The main function above shows the updates so we can interact with arbitrary files types. We use an alias to the base 
+   class instead of declaring TextFiles only.
