@@ -141,41 +141,55 @@
    $   ls
    a.txt               a_copy.txt
 
-   7. **password protection**
-      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-      $   touch a.txt -p
-      What do you want password for your file to be?1234
-      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-      $   cat a.txt
-      Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I love CSE332!
-      :wq
-      Please input the password: 1234
-      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-      $   ds a.txt
-      Please input the password: 1234
-       I love CSE332!
-       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-       $   ls
-       a.txt
-       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-       $   rm a.txt
-       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-       $   ls
+7. **password protection**
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt -p
+   What do you want password for your file to be?1234
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I love CSE332!
+   :wq
+   Please input the password: 1234
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+   Please input the password: 1234
+    I love CSE332!
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ls
+    a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   rm a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ls
 
-      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-      $   cp a.txt b
-      Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-      $   ls
-      a.txt                    b.txt
-       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-       $   cat b.txt
-       Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I enjoy CSE332
-       :wq
-       Please input the password: 1234
-       Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
-       $   ds b.txt
-       Please input the password: 1234
-       I enjoy CSE332
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cp a.txt b
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt                    b.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   cat b.txt
+    Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I enjoy CSE332
+    :wq
+    Please input the password: 1234
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ds b.txt
+    Please input the password: 1234
+    I enjoy CSE332
+
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt -p
+   What do you want password for your file to be?1234
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.testing
+   :wq
+   Please input the password: 456
+   You have entered the wrong password
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+   Please input the password: lol
+   You have entered the wrong password
 
 8. **rn**
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
@@ -223,3 +237,10 @@
     Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
     $   rn
     Incorrect arguments passed in.
+
+11. Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   touch a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   touch a.txt
+    File already exists in map.
+    The file you tried to add already exists in the file system :(
