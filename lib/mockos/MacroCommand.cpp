@@ -5,7 +5,7 @@
 
 using namespace std;
 
-MacroCommand::MacroCommand() {}
+MacroCommand::MacroCommand(){};
 
 MacroCommand::MacroCommand(AbstractFileSystem* a): afs(a){};
 

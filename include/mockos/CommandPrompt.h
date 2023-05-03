@@ -25,6 +25,7 @@ protected:
 
 enum command_return_values
 {
+    success_cp = 0,
     commandTaken = 1,
     quit = 2
 };

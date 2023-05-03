@@ -47,7 +47,7 @@ int CatCommand::execute(string command)
                 {
                     fileChanges.push_back(total.at(i));
                 }
-                if (file->write(fileChanges) )
+                if (file->write(fileChanges) == pass)
                 {
                     systemPtr->closeFile(file);
                     return pass;
@@ -101,7 +101,7 @@ int CatCommand::execute(string command)
                     {
                         fileChanges.push_back(total.at(i));
                     }
-                    if (file->append(fileChanges) )
+                    if (file->append(fileChanges) == pass)
                     {
                         systemPtr->closeFile(file);
                         return pass;

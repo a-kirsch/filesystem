@@ -19,16 +19,13 @@ void CommandPrompt::setFileFactory(AbstractFileFactory * fileFactory)
 
 int CommandPrompt::addCommand(std::string commandName, AbstractCommand * command)
 {
-    if (map.find(commandName) == map.end())
-    {
-        std::pair <string ,AbstractCommand * > commandPair;
-        commandPair = make_pair(commandName, command);
-        map.insert(commandPair);
+    int before = map.size();
+    map.insert(pair<string, AbstractCommand*>(commandName,command));
+    int after = map.size();
+    if(before != after){
+        return success_cp;
     }
-    else
-    {
-        return commandTaken;
-    }
+    return commandTaken;
 }
 
 void CommandPrompt::listCommands()
