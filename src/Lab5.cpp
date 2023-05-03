@@ -38,16 +38,16 @@ int main() {
     AbstractCommand* cpCommand = new CopyCommand(sfs);
     cp->addCommand("cp", cpCommand);
     MacroCommand* rnCommand = new MacroCommand();
-    rnCommand->addCommmand(cpCommand);
-    rnCommand->addCommmand(rmCommand);
+    rnCommand->addCommand(cpCommand);
+    rnCommand->addCommand(rmCommand);
     AbstractParsingStrategy * rps = new RenameParsingStrategy();
-    rnCommand->setParsingStrategy(rps);
+    rnCommand->setParseStrategy(rps);
     cp->addCommand("rn",rnCommand);
     MacroCommand* tcCommand = new MacroCommand();
-    tcCommand->addCommmand(touchCommand);
-    tcCommand->addCommmand(catCommand);
+    tcCommand->addCommand(touchCommand);
+    tcCommand->addCommand(catCommand);
     AbstractParsingStrategy * tcps = new TouchCatParsingStrategy();
-    tcCommand->setParsingStrategy(tcps);
+    tcCommand->setParseStrategy(tcps);
     cp->addCommand("tc",tcCommand);
     cp->run();
     /* d

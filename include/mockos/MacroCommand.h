@@ -7,13 +7,17 @@
 class MacroCommand : public AbstractCommand {
     std::vector<AbstractCommand *> commandList;
     AbstractParsingStrategy * parsingStrategy;
+
 public:
     MacroCommand();
+    MacroCommand(AbstractFileSystem *a);
+    AbstractFileSystem *afs;
     virtual int execute(std::string);
-    int addCommmand(AbstractCommand *);
-    int setParsingStrategy(AbstractParsingStrategy *);
+    int addCommand(AbstractCommand *);
+    int setParseStrategy(AbstractParsingStrategy *);
     virtual void displayInfo();
     ~MacroCommand() =default;
+
 };
 
 enum macro_return_values {

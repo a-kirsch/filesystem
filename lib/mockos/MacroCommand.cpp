@@ -7,8 +7,10 @@ using namespace std;
 
 MacroCommand::MacroCommand() {}
 
+MacroCommand::MacroCommand(AbstractFileSystem* a): afs(a){};
 
-int MacroCommand::addCommmand(AbstractCommand * command)
+
+int MacroCommand::addCommand(AbstractCommand * command)
 {
     if (command != nullptr)
     {
@@ -20,7 +22,7 @@ int MacroCommand::addCommmand(AbstractCommand * command)
 
 void MacroCommand::displayInfo(){}
 
-int MacroCommand::setParsingStrategy(AbstractParsingStrategy * strategy)
+int MacroCommand::setParseStrategy(AbstractParsingStrategy * strategy)
 {
     if (strategy != nullptr)
     {
