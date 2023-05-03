@@ -23,7 +23,7 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile * imageFile) {
     {
         for(int w = 0; w < size; ++w)
         {
-            cout << copyContents[h*size + w + 1];
+            cout << copyContents[h*size + w];
         }
         cout << endl;
     }

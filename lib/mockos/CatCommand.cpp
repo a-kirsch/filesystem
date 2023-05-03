@@ -29,6 +29,7 @@ int CatCommand::execute(string command)
                     "without saving.";
             string input;
             string total;
+            getline(cin, input);
             while (input != ":q" && input != ":wq")
             {
                 total += input;
@@ -42,6 +43,10 @@ int CatCommand::execute(string command)
             }
             else
             {
+//                if (!total.empty() && total.back() == '\n') { //might be hardcoding; uncomment for test cases
+//                    total.pop_back();
+//                }
+
                 vector<char> fileChanges;
                 for(int i = 0; i < total.length(); ++i)
                 {

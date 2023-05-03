@@ -12,36 +12,54 @@ std::vector<char> ImageFile::read() {
 }
 
 int ImageFile::write(vector<char> parameter) {
-    if (parameter.size() == 0)
+    contents.clear();
+    size = parameter.back();
+    int intSize = (int)(size-48);
+    if(parameter.size() != intSize * intSize +1)
     {
         return size_mismatch;
     }
-    size = parameter[parameter.size() - 2]- '0'; // object
-    parameter.pop_back();
-    parameter.pop_back();
-    if ( parameter.size() -1 == size*size )
+    for(int i = 0; i < intSize * intSize; i++)
     {
-        for(int i = 1; i < parameter.size(); ++i) {
-            if (i != parameter.size() - 1) {
-                if (parameter[i] != 'X' && parameter[i] != ' ') {
-                    contents.clear();
-                    size = 0;
-                    return bad_char_type; // nonzero return value for bad char, to be replaced w enums when we use them later
-                }
-            }
+        if(parameter[i] != 'X' && parameter[i] != ' ')
+        {
+            contents.clear();
+            size = 0;
+            return bad_char_type;
         }
-        try{
-            contents = parameter;
-            return pass;
-        }
-        catch(...) {
-            cout<<"write failed" << endl;
-            return 6; // change
-        }
+        contents.push_back(parameter[i]);
     }
-    else{
-        return size_mismatch;
-    }
+    return pass;
+    //    if (parameter.size() == 0)
+//    {
+//        return size_mismatch;
+//    }
+//    size = parameter[parameter.size() - 2]- '0'; // object
+//    parameter.pop_back();
+//    parameter.pop_back();
+//    if ( parameter.size() -1 == size*size )
+//    {
+//        for(int i = 1; i < parameter.size(); ++i) {
+//            if (i != parameter.size() - 1) {
+//                if (parameter[i] != 'X' && parameter[i] != ' ') {
+//                    contents.clear();
+//                    size = 0;
+//                    return bad_char_type; // nonzero return value for bad char, to be replaced w enums when we use them later
+//                }
+//            }
+//        }
+//        try{
+//            contents = parameter;
+//            return pass;
+//        }
+//        catch(...) {
+//            cout<<"write failed" << endl;
+//            return 6; // change
+//        }
+//    }
+//    else{
+//        return size_mismatch;
+//    }
 }
 
 int ImageFile::append(vector<char>) {

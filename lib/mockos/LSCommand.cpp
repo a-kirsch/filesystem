@@ -1,5 +1,6 @@
 #include "../../include/mockos/LSCommand.h"
 #include "../../include/mockos/SimpleFileSystem.h"
+#include "../../include/mockos/MetadataDisplayVisitor.h"
 #include <iostream>
 #include <iomanip>
 #include <memory>
@@ -23,22 +24,17 @@ int LSCommand::execute(string input)
     {
         for (string file: fileNames)
         {
-            int bufferSpace = 30 - file.length();
-            int bufferSpace2 = 0;
-            int fileSize = rand()%10+1;
             string fileType;
             string extensionType = file.substr(file.find('.') );
             if (extensionType == ".txt")
             {
-                fileType = "text";
-                bufferSpace2 = 25;
-                cout << file << setw(bufferSpace) << fileType << setw(bufferSpace2) << fileSize << endl;
+                MetadataDisplayVisitor * visitor = new MetadataDisplayVisitor();
+                visitor->visit_TextFile(); //needs parameter
             }
             else
             {
-                fileType = "image";
-                bufferSpace2 = 23;
-                cout << file << setw(bufferSpace) << fileType << setw(bufferSpace2) << fileSize << endl;
+                MetadataDisplayVisitor * visitor = new MetadataDisplayVisitor();
+                visitor->visit_ImageFile();
             }
         }
         return pass; //May need to change this so I open and close the file type (use an auto iterator)

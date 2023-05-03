@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <iomanip>
 #include "TextFile.h"
 #include "ImageFile.h"
 #include "AbstractFileVisitor.h"
