@@ -9,15 +9,13 @@ using namespace std;
 
 void MetadataDisplayVisitor::visit_TextFile(TextFile * textFile) {
     string fileType = "text";
-    int bufferspace1 = 20 - textFile->getName().length();
-    int bufferspace2 = 20 - fileType.length();
-    cout << textFile->getName() << setw(bufferspace1) << fileType << setw(bufferspace2) << textFile->getSize() << endl;
+    int bufferspace = 20 - textFile->getName().length();
+    cout << textFile->getName() << setw(bufferspace) << fileType << setw(bufferspace) << textFile->getSize() << endl;
 }
 
 void MetadataDisplayVisitor::visit_ImageFile(ImageFile * imageFile) {
     string fileType = "image";
-    int bufferspace1 = 20 - imageFile->getName().length();
-    int bufferspace2 = 20 - fileType.length();
-    cout << imageFile->getName() << setw(bufferspace1) << fileType << setw(bufferspace2) << imageFile->getSize() << endl;
+    int bufferspace = 20 - imageFile->getName().length();
+    cout << imageFile->getName() << setw(bufferspace) << fileType << setw(bufferspace) << imageFile->getSize() << endl;
 }
 

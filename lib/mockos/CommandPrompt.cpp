@@ -91,7 +91,7 @@ int CommandPrompt::run()
                             }
                             else
                             {
-                                cout << "Command does not exist." << endl;
+                                cout << "Command does not exist. " << endl;
                             }
                         }
                     }

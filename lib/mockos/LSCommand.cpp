@@ -22,22 +22,21 @@ int LSCommand::execute(string input)
     set<string> fileNames = systemPtr->getFileNames();
     if (input == "-m")
     {
-        for (string file: fileNames)
+        for (string name: fileNames)
         {
-            string fileType;
-            string extensionType = file.substr(file.find('.') );
-            if (extensionType == ".txt")
+            AbstractFile * file = systemPtr->openFile(name);
+            if (file != nullptr)
             {
                 MetadataDisplayVisitor * visitor = new MetadataDisplayVisitor();
-                visitor->visit_TextFile(); //needs parameter
+                file->accept(visitor);
+                systemPtr->closeFile(file);
             }
             else
             {
-                MetadataDisplayVisitor * visitor = new MetadataDisplayVisitor();
-                visitor->visit_ImageFile();
+                return nullptr_error;
             }
         }
-        return pass; //May need to change this so I open and close the file type (use an auto iterator)
+        return pass;
     }
     else if (input == "")
     {
