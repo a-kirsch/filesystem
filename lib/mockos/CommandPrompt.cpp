@@ -38,7 +38,7 @@ void CommandPrompt::listCommands()
 
 string CommandPrompt::prompt()
 {
-    cout << "Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command" << endl;
+    cout << "Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command." << endl;
     cout << "$   ";
     string userInput;
     getline(cin, userInput);
@@ -52,7 +52,7 @@ int CommandPrompt::run()
         string input = prompt();
         if (input == "q")
         {
-            cout << "Goodbye" << endl;
+            cout << "File System Terminated." << endl;
             return quit;
         }
         else if (input == "help")

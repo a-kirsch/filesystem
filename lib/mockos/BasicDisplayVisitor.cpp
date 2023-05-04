@@ -14,6 +14,7 @@ void BasicDisplayVisitor::visit_TextFile(TextFile * textFile) {
     {
         cout << copyContents[i];
     }
+    cout << endl;
 }
 
 void BasicDisplayVisitor::visit_ImageFile(ImageFile * imageFile) {
@@ -27,5 +28,7 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile * imageFile) {
         }
         cout << endl;
     }
+
+    cout << endl;
 }
 

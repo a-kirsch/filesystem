@@ -45,8 +45,8 @@ int LSCommand::execute(string input)
         {
             if ( i % commands_per_line == 0)
             {
-                int bufferSpace = 30 - outputIter->length();
-                cout << * outputIter << setw(bufferSpace);
+                int bufferSpace = 20;
+                cout << left << setw(bufferSpace) << * outputIter ;
             }
             else
             {

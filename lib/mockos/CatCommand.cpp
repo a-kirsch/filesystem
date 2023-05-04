@@ -23,13 +23,13 @@ int CatCommand::execute(string command)
     if (spaceIndex == string::npos) //There is no space, the input is a single word
     {
         AbstractFile * file = systemPtr->openFile(command);
+        cout << "Please input data to override the file. Type ':wq' to save and quit or ':q' to quit "
+                "without saving." << endl;
+        string input;
+        string total;
+        getline(cin, input);
         if (file != nullptr)
         {
-            cout << "Please input data to override the file. Type ':wq' to save and quit or ':q' to quit "
-                    "without saving.";
-            string input;
-            string total;
-            getline(cin, input);
             while (input != ":q" && input != ":wq")
             {
                 total += input;
@@ -43,15 +43,12 @@ int CatCommand::execute(string command)
             }
             else
             {
-//                if (!total.empty() && total.back() == '\n') { //might be hardcoding; uncomment for test cases
-//                    total.pop_back();
-//                }
-
                 vector<char> fileChanges;
                 for(int i = 0; i < total.length(); ++i)
                 {
                     fileChanges.push_back(total.at(i));
                 }
+                fileChanges.pop_back();
                 if (file->write(fileChanges) == pass)
                 {
                     systemPtr->closeFile(file);
@@ -79,7 +76,7 @@ int CatCommand::execute(string command)
             if (file != nullptr)
             {
                 cout << "Please input data to be appended to the file. Type ':wq' to save and quit or ':q' to quit"
-                        "without saving.";
+                        "without saving." << endl;
                 vector<char> fileContents = file->read(); //Display the current file contents
                 for (char character: fileContents)
                 {
@@ -88,6 +85,7 @@ int CatCommand::execute(string command)
                 cout << endl;
                 string input;
                 string total;
+                getline(cin, input);
                 while (input != ":q" && input != ":wq")
                 {
                     total += input;
@@ -102,10 +100,11 @@ int CatCommand::execute(string command)
                 else
                 {
                     vector<char> fileChanges;
-                    for(int i = 0; i < total.length(); ++i)
+                    for (int i = 0; i < total.length(); ++i)
                     {
                         fileChanges.push_back(total.at(i));
                     }
+                    fileChanges.pop_back();
                     if (file->append(fileChanges) == pass)
                     {
                         systemPtr->closeFile(file);
