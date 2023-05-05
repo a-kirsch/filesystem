@@ -82,7 +82,7 @@ AbstractFile* ImageFile::clone(std::string name)
 {
     AbstractFile* copy = new ImageFile(name + ".img");
     vector<char> newContents = this->read();
-    newContents.push_back(size + '0'); //Push back the size of each row
+    newContents.push_back(size); //Push back the size of each row
     copy->write(newContents);
     return copy;
 }

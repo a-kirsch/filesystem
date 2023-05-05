@@ -141,6 +141,24 @@
    $   ls
    a.txt               a_copy.txt
 
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   tc a.img
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.
+   X X X X X3
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   cp a.img b
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   ds b.img
+   X X
+    X
+   X X
+
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   ls
+   a.img               b.img
+
+
 7. **password protection**
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
    $   touch a.txt -p
@@ -202,6 +220,27 @@
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
    $   ls
    b.txt
+
+
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   ls
+    a.img               b.img
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   rn a.img b
+    File already exists in map.
+    File failed to add to system.
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   rn b.img c
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   ds c.img
+    X X
+     X
+    X X
+    
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   ls
+    a.img               c.img
+    
 
 9. **tc**
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
