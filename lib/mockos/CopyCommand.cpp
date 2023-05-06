@@ -10,7 +10,7 @@ CopyCommand::CopyCommand(AbstractFileSystem * afs): systemPtr(afs){}
 
 void CopyCommand::displayInfo()
 {
-    cout << "copy copies a file that currently exists in the file system and adds the new file to the file system, "
+    cout << "cp copies a file that currently exists in the file system and adds the new file to the file system, "
             "copy can be invoked with the command: 'cp <file_to_copy> <new_name_with_no_extension>'" << endl;
 }
 

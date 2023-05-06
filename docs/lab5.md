@@ -158,7 +158,6 @@
    $   ls
    a.img               b.img
 
-
 7. **password protection**
    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
    $   touch a.txt -p

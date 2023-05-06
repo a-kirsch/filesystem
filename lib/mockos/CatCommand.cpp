@@ -76,7 +76,7 @@ int CatCommand::execute(string command)
             if (file != nullptr)
             {
                 cout << "Please input data to be appended to the file. Type ':wq' to save and quit or ':q' to quit"
-                        "without saving." << endl;
+                        " without saving." << endl;
                 vector<char> fileContents = file->read(); //Display the current file contents
                 for (char character: fileContents)
                 {
