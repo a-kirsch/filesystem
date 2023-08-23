@@ -1,97 +1,284 @@
-# Mock OS Studios/Lab
-Throughout these studios and the lab, you'll be creating a static library that
-implements a mock operating system.
-A user of this mock operating system will be able to
-create and interact with files using commands.
+# Lab 5
+# Team Members: Adam Kirsch, Aroon Sankoh, Sam Singer
+# Errors
+1. Display had a path that opened the file without closing it preventing future commands like rm from working. Fixed by adding 'systemPtr->closeFile(file);'
+2. Issues with image file copying.
 
-At each stage, you'll try out your static library by writing and running executables,
-and you'll test it by running unit tests.
+# Test Cases
+1. **Quit**:
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   q
+   Goodbye
 
-## Directory structure
-The directory structure aims to follow best practices,
-so it will look similar to many C++ projects in the real world.
+2. **Help**:
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help
+   cat
+   cp
+   ds
+   ls
+   rm
+   rn
+   tc
+   touch
 
-The idea is to separate the public interface from its implementation.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help cat
+   cat overwrites or concatenates a file, cat can be invoked with the command: 'cat <filename> -a' to add to the contents of an existing file or 'cat <filename>' to overwrite the current contents of a file.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help cp
+   copy copies a file that currently exists in the file system and adds the new file to the file system, copy can be invoked with the command: 'cp <file_to_copy> <new_name_with_no_extension>'
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help ds
+   display opens a file and displays its contents, display can be invoked with the command: 'ds <filename> -d' to display just the data of a file or 'ds <filename>' to display the formatted contents of a file.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help ls
+   ls lists all available commands, ls can be invoked with the command 'ls'
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help rm
+   rm is used to remove files. It can be invoked with the command 'rm <filename>'
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   help touch
+   touch creates a file, touch can be invoked with the command: touch <filename>, or touch <filename> -p to create a password protected file
 
-- [docs/](./docs)
-  - This directory contains the markdown files in which you'll answer
-    the studio questions and write your lab README.
+3. **touch and ls**:
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch b.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt                    b.txt
 
-- [include/](./include)
-  - This directory contains the public header files for the static library.
-  - They are placed within the inner directory `mockos/`,
-    so when including them from source files, prefix the filename with `mockos/`.
-    For example, if you wanted to use TextFile, you would type
-    `#include "mockos/TextFile.h"`.
-  - The prefix is not necessary when
-    you're including a header file from another header file that's inside `include/mockos/`.
-- [lib/](./lib)
-  - This directory contains the source files for the implementation of the static library.
-  - Like `include/`, the files are placed within an inner `mockos/` directory.
-- [src/](./src)
-  - This directory contains the source files for the executable code.
-  - There's a source file for each studio and the lab.
-- [tests/](./tests)
-  - This directory contains the unit tests.
-  - Since the tests are already written for you, you will not need to modify the files in this directory.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch c.img
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   c.img
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch d.img
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   c.img                    d.img
 
-## Workflow
-The workflow for each studio is similar.
+4. **rm**:
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   rm b.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   rm a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
 
-### Answering the studio's questions
-While you go through the studio, write your answers to the studio's questions in the associated Markdown file.
-As an example, for Studio 16, write your answers in `docs/studio16.md`.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   rm c.img
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   d.img
 
-### Implementing part of the static library
-First, you'll implement the part of the static library
-specified by the studio instructions.
+5. **cat and ds**
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.12345
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+    12345
 
-When implementing a class, fill in its header file in `include/mockos/`,
-and fill in its source file in `lib/mockos/`.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch c.img
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat c.img
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.X X X X X3
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds c.img
+   X X
+    X
+   X X
 
-When you're writing the header file, you can include other header files in `include/mockos/` without the `mockos/` prefix.
-For example, when writing the header file for `TextFile` in `include/mockos/TextFile.h`, you'd include AbstractFile like this:
-```c++
-#include "AbstractFile"
-```
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat c.img -a
+   Please input data to be appended to the file. Type ':wq' to save and quit or ':q' to quitwithout saving.
+   X X X X X
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds c.img -d
+    X X X X X
 
-However, when you're writing the source file, you must add the `mockos/` prefix.
-For example, when writing the source file for `TextFile` in `lib/mockos/TextFile.cpp`, you'd include its own header file like this:
-```c++
-#include "mockos/TextFile.h"
-```
+6. **cp**
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.123456
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cp a.txt a_copy
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a_copy.txt
+     123456
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   cat a_copy.txt
+    Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.Hello
+    :wq
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ds a.txt
+    123456
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ds a_copy.txt
+    Hello
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt               a_copy.txt
 
-### Trying out the newly implemented methods
-To try out the newly implemented methods,
-you'll then write a main method in the studio's source file in `src/`.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   tc a.img
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.
+   X X X X X3
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   cp a.img b
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   ds b.img
+   X X
+    X
+   X X
 
-We have created executable targets for each studio.
-Just write the main method in the studio's source file,
-and you can run the corresponding target.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+   $   ls
+   a.img               b.img
 
-For example, when you're working on studio 16,
-you'd write a main method in `src/Studio16.cpp`.
-Then, you can run the `studio16` target.
+7. **password protection**
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt -p
+   What do you want password for your file to be?1234
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I love CSE332!
+   :wq
+   Please input the password: 1234
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+   Please input the password: 1234
+    I love CSE332!
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ls
+    a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   rm a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ls
 
-In CLion, you can choose the target by
-opening the Run Configurations dropdown menu.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cp a.txt b
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt                    b.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   cat b.txt
+    Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.I enjoy CSE332
+    :wq
+    Please input the password: 1234
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ds b.txt
+    Please input the password: 1234
+    I enjoy CSE332
 
-In VS, you can choose the target by
-switching to CMake Targets View.
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt -p
+   What do you want password for your file to be?1234
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   cat a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.testing
+   :wq
+   Please input the password: 456
+   You have entered the wrong password
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+   Please input the password: lol
+   You have entered the wrong password
 
-### Running the unit tests
-Finally, you'll run the unit tests to check that everything works as we expect.
+8. **rn**
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   touch a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   rn a.txt b
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   b.txt
 
-To run a studio's unit tests, run the Google Test target corresponding to that studio.
-For example, for studio 16, run the `teststudio16` target.
 
-## Lab tips
-### Adding new files
-We've configured CMake to find the header and source files with globs.
-As a consequence, when you add new files, you'll need to reload the CMake project
-for them to be added to the static library.
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   ls
+    a.img               b.img
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   rn a.img b
+    File already exists in map.
+    File failed to add to system.
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   rn b.img c
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   ds c.img
+    X X
+     X
+    X X
+    
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command.
+    $   ls
+    a.img               c.img
+    
 
-In CLion, right-click the top-level CMakeLists.txt
-and choose "Reload CMake Project".
+9. **tc**
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   tc a.txt
+   Please input data to override the file. Type ':wq' to save and quit or ':q' to quit without saving.123456
+   :wq
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ls
+   a.txt
+   Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+   $   ds a.txt
+   123456
 
-In VS, choose File > Open > CMake and select the top-level CMakeLists.txt.
+10. **bad inputs**
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   touch a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   cat
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   cp
+    Incorrect arguments for the copy command. You must pass in a file to copy and a new name for the copy.
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   ds
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   rm
+    File does not exist.
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   tc
+    You must pass a filename with touch. e.g.: touch <filename>
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   rnn
+    Command does not exist.
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   rn
+    Incorrect arguments passed in.
+
+11. Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   touch a.txt
+    Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command
+    $   touch a.txt
+    File already exists in map.
+    The file you tried to add already exists in the file system :(
